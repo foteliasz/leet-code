@@ -1,0 +1,43 @@
+public partial class Solution {
+    
+    // A.K.A. cycle detection
+    public bool CanFinish(int numCourses, int[][] prerequisites)
+    {
+        var graph = new Dictionary<int, List<int>>();
+        foreach (var prq in prerequisites)
+        {
+            if (!graph.TryGetValue(prq[0], out _))
+                graph.Add(prq[0], new List<int> { prq[1] });
+            else
+                graph[prq[0]].Add(prq[1]);
+        }
+
+        var visiting = new HashSet<int>();
+        var visited = new HashSet<int>();
+
+        for (var i = 0; i < numCourses; i++)
+        {
+            var res = Traverse(i, graph, visiting, visited);
+            if (!res) return false;
+        }
+
+        return true;
+    }
+
+    public bool Traverse(int c, Dictionary<int, List<int>> graph, HashSet<int> visiting, HashSet<int> visited)
+    {
+        if (visited.Contains(c)) return true;
+        if (visiting.Contains(c)) return false;
+        if (!graph.ContainsKey(c)) return true;
+        
+        visiting.Add(c);
+        foreach (var pre in graph[c])
+        {
+            if (!Traverse(pre, graph, visiting, visited)) return false;
+        }
+
+        visiting.Remove(c);
+        visited.Add(c);
+        return true;
+    }
+}

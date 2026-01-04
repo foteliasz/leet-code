@@ -1,0 +1,47 @@
+public class LRUCache
+{
+    private int _cap;
+    private Dictionary<int, LinkedListNode<(int key, int val)>> _dict;
+    private LinkedList<(int key, int val)> _ll;
+    
+    public LRUCache(int capacity)
+    {
+        _cap = capacity;
+        _dict = new Dictionary<int, LinkedListNode<(int key, int val)>>();
+        _ll = new LinkedList<(int key, int val)>();
+    }
+    
+    public int Get(int key)
+    {
+        if (!_dict.TryGetValue(key, out var node))
+            return -1;
+
+        _ll.Remove(node);
+        _ll.AddFirst(node);
+
+        return node.Value.val;
+    }
+    
+    public void Put(int key, int value)
+    {
+        // Already exists
+        if (_dict.TryGetValue(key, out var node))
+        {
+            _ll.Remove(node);
+            _ll.AddFirst(node);
+            node.Value = (key, value);
+            return;
+        }
+
+        var newNode = new LinkedListNode<(int key, int val)>((key, value));
+        _ll.AddFirst(newNode);
+        _dict[key] = newNode;
+
+        while (_dict.Count > _cap)
+        {
+            var toDel = _ll.Last;
+            _ll.RemoveLast();
+            _dict.Remove(toDel.Value.key);
+        }
+    }
+}

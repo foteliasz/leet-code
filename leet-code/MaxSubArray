@@ -1,0 +1,35 @@
+public partial class Solution {
+    public int MaxSubArray(int[] nums)
+    {
+        if (nums.Length == 0) return 0;
+        if (nums.Length == 1) return nums[0];
+
+        var cost = nums[0] < 0
+            ? nums[0]
+            : 0;
+        var profit = nums[0];
+        var max = nums[0];
+
+        for (var i = 1; i < nums.Length; i++)
+        {
+            if (nums[i] < 0)
+            {
+                max = Math.Max(nums[i], max);
+                cost += nums[i];
+            }
+            else
+            {
+                profit = Math.Max(
+                    nums[i],
+                    nums[i] + cost + profit
+                );
+                
+                max = Math.Max(max, profit);
+                cost = 0;
+            }
+            
+        }
+
+        return max;
+    }
+}

@@ -1,0 +1,18 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AAssert_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FLibrary_003FApplication_0020Support_003FJetBrains_003FRider2025_002E3_003Fresharper_002Dhost_003FSourcesCache_003F62bb4746d7d14dc1cd4274a28788572a7a4641bd3a7d5736479c9697bcb4794_003FAssert_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AHashSet_00601_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FLibrary_003FApplication_0020Support_003FJetBrains_003FRider2025_002E3_003Fresharper_002Dhost_003FDecompilerCache_003Fdecompiler_003F5c7a7d2e5200409b8e425009832b6b31d930_003F05_003F5eaaabe1_003FHashSet_00601_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AISet_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FLibrary_003FApplication_0020Support_003FJetBrains_003FRider2025_002E3_003Fresharper_002Dhost_003FSourcesCache_003F668fde99b1ba46fd7226da3e7db911a6415318d0fbdc3505b7ba43b934b3_003FISet_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AThrowHelper_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FLibrary_003FApplication_0020Support_003FJetBrains_003FRider2025_002E3_003Fresharper_002Dhost_003FSourcesCache_003F5c21b9149ef32e1f68396d6e6fc7311324c9829ed40328c33f6d5f859a757_003FThrowHelper_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1caa11f8_002Db37f_002D44b1_002Da9c1_002D66368cceeebb/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="LengthOfLongestSubstringTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;MSTest::CF4B5616-7105-46CF-979F-9E6CF7714CC5::net10.0::leet_code_tests.LengthOfLongestSubstringTests.LengthOfLongestSubstringTest&lt;/TestId&gt;
+    &lt;TestId&gt;VsTest::CF4B5616-7105-46CF-979F-9E6CF7714CC5::net10.0::executor://mstestadapter/v4#leet_code_tests.LengthOfLongestSubstringTests.LengthOfLongestSubstringTest&lt;/TestId&gt;
+    &lt;TestId&gt;MSTest::CF4B5616-7105-46CF-979F-9E6CF7714CC5::net10.0::leet_code_tests.BinarySearchTests.SearchTest&lt;/TestId&gt;
+    &lt;TestId&gt;VsTest::CF4B5616-7105-46CF-979F-9E6CF7714CC5::net10.0::executor://mstestadapter/v4#leet_code_tests.BinarySearchTests.SearchTest&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d2faff2a_002D78bb_002D4215_002Dbba6_002D4edbd652529d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="LengthOfLongestSubstringTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;MSTest::CF4B5616-7105-46CF-979F-9E6CF7714CC5::net10.0::leet_code_tests.LengthOfLongestSubstringTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

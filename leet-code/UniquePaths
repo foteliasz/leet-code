@@ -1,0 +1,26 @@
+public partial class Solution {
+    public int UniquePaths(int m, int n)
+    {
+        var grid = new int[m, n];
+        for (var r = 0; r < m; r++)
+        {
+            for (var c = 0; c < n; c++)
+            {
+                grid[r, c] = -1;
+            }
+        }
+
+        return Sum(0, 0, m, n, grid);
+    }
+
+    private int Sum(int r, int c, int m, int n, int[,] grid)
+    {
+        if (r == m) return 0;
+        if (c == n) return 0;
+        if (r == m - 1 && c == n - 1) return 1;
+        if (grid[r, c] != -1) return grid[r, c];
+
+        grid[r, c] = Sum(r + 1, c, m, n, grid) + Sum(r, c + 1, m, n, grid);
+        return grid[r, c];
+    }
+}

@@ -1,0 +1,38 @@
+public partial class Solution
+{
+    public Node CloneGraph(Node node)
+    {
+        if (node is null) return null;
+        
+        var dict = new Dictionary<Node, Node>();
+        var q = new Queue<Node>();
+
+        var cp = new Node(node.val);
+        dict.Add(node, cp);
+        q.Enqueue(node);
+
+        while (q.Count > 0)
+        {
+            var qLen = q.Count;
+            for (var _ = 0; _ < qLen; _++)
+            {
+                var n = q.Dequeue();
+                if (!dict.ContainsKey(n))
+                    dict.Add(n, new Node(n.val));
+                
+                foreach (var nbr in n.neighbors)
+                {
+                    if (!dict.ContainsKey(nbr))
+                    {
+                        dict.Add(nbr, new Node(nbr.val));
+                        q.Enqueue(nbr);
+                    }
+                    
+                    dict[n].neighbors.Add(dict[nbr]);
+                }
+            }
+        }
+
+        return cp;
+    }
+}

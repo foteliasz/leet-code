@@ -1,0 +1,62 @@
+
+public class Trie
+{
+    public TNode Root { get; set; } = new TNode();
+    
+    public Trie() {
+        
+    }
+    
+    public void Insert(string word)
+    {
+        if (word.Length == 0) return;
+
+        var curr = Root;
+        foreach (var ch in word)
+        {
+            if (!curr.Nodes.ContainsKey(ch))
+                curr.Nodes.Add(ch, new TNode
+                {
+                    Val = ch
+                });
+
+            curr = curr.Nodes[ch];
+        }
+
+        curr.IsEnd = true;
+    }
+    
+    public bool Search(string word)
+    {
+        var curr = Root;
+        foreach (var ch in word)
+        {
+            if (!curr.Nodes.TryGetValue(ch, out var node))
+                return false;
+
+            curr = node;
+        }
+
+        return curr.IsEnd;
+    }
+    
+    public bool StartsWith(string prefix) {
+        var curr = Root;
+        foreach (var ch in prefix)
+        {
+            if (!curr.Nodes.TryGetValue(ch, out var node))
+                return false;
+
+            curr = node;
+        }
+
+        return curr.IsEnd || curr.Nodes.Any();
+    }
+
+    public class TNode
+    {
+        public bool IsEnd { get; set; } = false;
+        public char? Val { get; set; } = null;
+        public IDictionary<char, TNode> Nodes { get; set; } = new Dictionary<char, TNode>();
+    }
+}

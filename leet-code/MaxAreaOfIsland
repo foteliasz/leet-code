@@ -1,0 +1,42 @@
+public partial class Solution {
+    public int MaxAreaOfIsland(int[][] grid)
+    {
+        var max = 0;
+        var visited = new HashSet<(int R, int C)>();
+        for (var r = 0; r < grid.Length; r++)
+        {
+            for (var c = 0; c < grid[r].Length; c++)
+            {
+                if (grid[r][c] == 0) continue;
+                if (visited.Contains((r, c))) continue;
+
+                var curr = Explore(grid, r, c, visited);
+                if (curr > max) max = curr;
+            }
+        }
+
+        return max;
+    }
+
+    private int Explore(int[][] grid, int r, int c, HashSet<(int R, int C)> visited)
+    {
+        if (r < 0 || r >= grid.Length) return 0;
+        if (c < 0 || c >= grid[r].Length) return 0;
+        if (grid[r][c] == 0) return 0;
+        if (visited.Contains((r, c))) return 0;
+
+        var sum = 0;
+        visited.Add((r, c));
+        
+        // N
+        sum += Explore(grid, r - 1, c, visited);
+        // E
+        sum += Explore(grid, r, c + 1, visited);
+        // S
+        sum += Explore(grid, r + 1, c, visited);
+        // W
+        sum += Explore(grid, r, c - 1, visited);
+
+        return sum + 1;
+    }
+}
