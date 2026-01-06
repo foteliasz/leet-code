@@ -1,0 +1,33 @@
+public partial class Solution {
+    public int MinCostConnectPoints(int[][] points)
+    {
+        // Where (int, int, int) represents (source, destination, weight)
+        var heap = new PriorityQueue<(int src, int dst, int w), int>();
+        
+        for (var a = 0; a < points.Length; a++)
+        {
+            var x1 = points[a][0];
+            var y1 = points[a][1];
+            for (var b = a + 1; b < points.Length; b++)
+            {
+                var x2 = points[b][0];
+                var y2 = points[b][1];
+                var w = Math.Abs(x1 - x2) + Math.Abs(y1 - y2);
+                
+                heap.Enqueue((a, b, w), w);
+            }
+        }
+        
+        var u = new AUnionFind(points);
+        var len = 0;
+        while (heap.Count > 0)
+        {
+            var (src, dst, w) = heap.Dequeue();
+            if (!u.Union(src + 1, dst + 1)) continue;
+
+            len += w;
+        }
+
+        return len;
+    }
+}

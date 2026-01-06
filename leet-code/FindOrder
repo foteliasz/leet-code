@@ -1,0 +1,46 @@
+public partial class Solution {
+    public int[] FindOrder(int numCourses, int[][] pre)
+    {
+        var cour = new BNode[numCourses];
+        for (var i = 0; i < numCourses; i++)
+            cour[i] = new BNode{ Val = i };
+
+        foreach (var pair in pre)
+        {
+            var c = cour[pair[0]];
+            var p = cour[pair[1]];
+            c.Pre.Add(p);
+        }
+
+        var res = new List<int>();
+        var path = new HashSet<BNode>();
+
+        foreach (var n in cour)
+            if (!Traverse(n, path, res))
+                return new int[0];
+
+        return res.ToArray();
+    }
+
+    private bool Traverse(BNode n, HashSet<BNode> path, List<int> res)
+    {
+        if (path.Contains(n)) return false;
+        if (res.Contains(n.Val)) return true;
+
+        path.Add(n);
+        foreach (var p in n.Pre)
+            if (!Traverse(p, path, res))
+                return false;
+        
+        res.Add(n.Val);
+        path.Remove(n);
+
+        return true;
+    }
+
+    private class BNode
+    {
+        public int Val { get; set; }
+        public List<BNode> Pre { get; set; } = new();
+    }
+}

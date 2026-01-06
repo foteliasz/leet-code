@@ -1,0 +1,45 @@
+public partial class Solution {
+    public bool CanPartition(int[] nums)
+    {
+        var sum = 0;
+        foreach (var num in nums)
+            sum += num;
+
+        // If odd, it is impossible
+        if (sum % 2 != 0) return false;
+
+        // What we are aiming for
+        var target = sum / 2;
+
+        // The zero means that we can skip everything
+        var hs = new HashSet<int> { 0 };
+        
+        // Now, for every possible num in input collection
+        foreach (var num in nums)
+        {
+            // Let's create new HashSet, to not modify
+            // collection during iteration
+            var nhs = new HashSet<int>();
+            
+            // Then, for every existing sum in old HashSet
+            foreach (var s in hs)
+            {
+                // Let's check if the new sum is possibly a target
+                if (num + s == target) return true;
+                
+                // We need to store the original value 
+                // to not lose it in the new HashSet
+                nhs.Add(s);
+                
+                // Finally, let's add new sum to branch from
+                nhs.Add(num + s);
+            }
+
+            // And swap
+            hs = nhs;
+        }
+
+        return false;
+    }
+    
+}

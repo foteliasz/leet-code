@@ -1,0 +1,35 @@
+public partial class Solution {
+    public bool CanPartition(int[] nums)
+    {
+        var sum = 0;
+        foreach (var num in nums)
+            sum += num;
+
+        // If odd, it is impossible
+        if (sum % 2 != 0) return false;
+
+        var target = sum / 2;
+        
+        var memo = new int[nums.Length, target + 1];
+        for (var i = 0; i < nums.Length; i++)
+        for (var j = 0; j < target + 1; j++)
+            memo[i, j] = -1;
+        
+        return Group(0, nums, target, memo);
+    }
+
+    private bool Group(int i, int[] nums, int target, int[,] memo)
+    {
+        if (i == nums.Length) return false;
+        if (nums[i] == target) return true;
+        if (memo[i, target] != -1) return memo[i, target] == 1;
+        
+        var skip = Group(i + 1, nums, target, memo);
+        var take = target - nums[i] >= 0
+            ? Group(i + 1, nums, target - nums[i], memo)
+            : false;
+
+        memo[i, target] = skip || take ? 1 : 0;
+        return memo[i, target] == 1;
+    }
+}
