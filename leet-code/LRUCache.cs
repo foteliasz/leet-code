@@ -25,20 +25,20 @@ public class LRUCache
     }
     
     public int Get(int key) {
-        if (!_dict.TryGetValue(key, out var NNode))
+        if (!_dict.TryGetValue(key, out var nNode))
             return -1;
         
-        Remove(NNode);
-        Insert(NNode);
-        return NNode.Val;
+        Remove(nNode);
+        Insert(nNode);
+        return nNode.Val;
     }
     
     public void Put(int key, int value) {
-        if (_dict.TryGetValue(key, out var NNode))
+        if (_dict.TryGetValue(key, out var nNode))
         {
-            Remove(NNode);
-            Insert(NNode);
-            NNode.Val = value;
+            Remove(nNode);
+            Insert(nNode);
+            nNode.Val = value;
             return;
         }
 
@@ -54,19 +54,19 @@ public class LRUCache
         _dict[key] = toAdd;
     }
 
-    private void Remove(NNode NNode)
+    private void Remove(NNode nNode)
     {
-        if (ReferenceEquals(NNode, _tail.Next)) _tail.Next = NNode.Next;
-        if (ReferenceEquals(NNode, _head.Prev)) _head.Prev = NNode.Prev;
-        if (NNode.Next is not null) NNode.Next.Prev = NNode.Prev;
-        if (NNode.Prev is not null) NNode.Prev.Next = NNode.Next;
+        if (ReferenceEquals(nNode, _tail.Next)) _tail.Next = nNode.Next;
+        if (ReferenceEquals(nNode, _head.Prev)) _head.Prev = nNode.Prev;
+        if (nNode.Next is not null) nNode.Next.Prev = nNode.Prev;
+        if (nNode.Prev is not null) nNode.Prev.Next = nNode.Next;
     }
 
-    private void Insert(NNode NNode)
+    private void Insert(NNode nNode)
     {
-        NNode.Prev = _head.Prev;
-        NNode.Next = _head;
-        NNode.Prev.Next = NNode;
-        _head.Prev = NNode;
+        nNode.Prev = _head.Prev;
+        nNode.Next = _head;
+        nNode.Prev.Next = nNode;
+        _head.Prev = nNode;
     }
 }

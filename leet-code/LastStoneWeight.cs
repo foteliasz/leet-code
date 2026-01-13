@@ -1,20 +1,20 @@
 public partial class Solution {
     public int LastStoneWeight(int[] stones)
     {
-        var stack = new PriorityQueue<int, int>();
+        var heap = new PriorityQueue<int, int>();
         foreach (var stone in stones)
         {
-            stack.Enqueue(stone, -stone);
+            heap.Enqueue(stone, -stone);
         }
 
-        while (stack.Count > 1)
+        while (heap.Count > 1)
         {
-            var x = stack.Dequeue();
-            var y = stack.Dequeue();
+            var x = heap.Dequeue();
+            var y = heap.Dequeue();
             y = x - y;
-            if (y > 0) stack.Enqueue(y, -y);
+            if (y > 0) heap.Enqueue(y, -y);
         }
 
-        return stack.Count > 0 ? stack.Dequeue() : 0;
+        return heap.Count > 0 ? heap.Dequeue() : 0;
     }
 }

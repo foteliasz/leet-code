@@ -1,0 +1,17 @@
+public partial class Solution {
+    public int[] TopKFrequent(int[] nums, int k)
+    {
+        var cnr = new Dictionary<int, int>();
+        foreach (var num in nums)
+        {
+            if (!cnr.TryAdd(num, 1))
+                cnr[num]++;
+        }
+
+        return cnr
+            .OrderByDescending(i => i.Value)
+            .Take(k)
+            .Select(i => i.Key)
+            .ToArray();
+    }
+}

@@ -22,7 +22,7 @@ public partial class Solution {
             }
         }
         
-        // Where (int, int, int) represents (destination, weight)
+        // Where (int, int) represents (destination, weight)
         var heap = new PriorityQueue<(int dst, int w), int>();
         var visit = new HashSet<int>();
         visit.Add(0);
